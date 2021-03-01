@@ -1,6 +1,6 @@
 # GameEngine | Codeology Spring 2021 Project
 ### Project Leader: Ethan Chen
-### Developers: tbd
+### Developers: Kyle Hua, Stella Lu, Ernest Goh, Sebastian Szafir
 
 ## Note: project is still in development 
 
