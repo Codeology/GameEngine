@@ -76,8 +76,6 @@ bool account::create_account()
 	// END: code to check if account name is valid
 
     } else {
-        
-
         cout<<"\nEnter Type of The account (C/S) : ";
         cin>>type;
         type=toupper(type);
