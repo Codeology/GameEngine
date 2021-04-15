@@ -10,13 +10,17 @@
 
 namespace bounc { namespace graphics {
 
+	GLFWwindow* m_Window;
+
 	Window::Window(const char *name, int width, int height) {
 		m_Name = name;
 		m_Width = width;
 		m_Height = height; 
 
-		if (!init())
-			glfwTerminate();
+		if (!init()) {
+			exit(EXIT_FAILURE);// glfwTerminate();
+		}
+
 	}
 
 	Window::~Window(){
@@ -24,23 +28,25 @@ namespace bounc { namespace graphics {
 	}
 
 	bool Window::init() {
-		if (!glfwInit())
-			PRINT("Failed to initialize GLFW");
+		if (!glfwInit()) {
 			return false;
+		}
 
-		m_Window = glfwCreateWindow(m_Width, m_Height, m_Name, NULL, NULL);
-		if (!m_Window) {
+		m_Window = glfwCreateWindow(m_Width, m_Height, m_Name, nullptr, nullptr);
+		if (m_Window == nullptr) {
 			glfwTerminate();
-			PRINT("Failed to create GLFW window. F.");
 			return false;
 		}
 		glfwMakeContextCurrent(m_Window);
+		glewExperimental = GL_TRUE;
 
 		return true; 
 	}
 
 	void Window::update() const {
 		glfwPollEvents();
+		glClearColor( 0.23f, 0.38f, 0.47f, 1.0f );
+        glClear( GL_COLOR_BUFFER_BIT );
 		glfwSwapBuffers(m_Window);
 
 	}
