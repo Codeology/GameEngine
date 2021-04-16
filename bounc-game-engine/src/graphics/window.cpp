@@ -80,6 +80,10 @@ namespace bounc { namespace graphics {
 		return mKeys[keycode];
 	}
 
+	bool Window::isMouseButtonPressed(unsigned int keycode) {
+		//FILL OUT (similar to above)
+	}
+
 	void key_callback(GLFWwindow* window, int key, int scancode, int action, int mods) { //METHOD FOR KEY CALLBACK
 
 		Window* win = (Window*) glfwGetWindowUserPointer(window); //this line is basically getting the m_Window instance of the current window we have open
