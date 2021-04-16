@@ -16,6 +16,7 @@ namespace bounc { namespace graphics {
 	double Window::mx;
 	double Window::my; 
 	void key_callback(GLFWwindow* window, int key, int scancode, int action, int mods);
+	// void mouse_button_callback(GLFWwindow* window, int button, int action, int mods);
 
 	Window::Window(const char *name, int width, int height) {
 		m_Name = name;
@@ -55,7 +56,7 @@ namespace bounc { namespace graphics {
 		glfwSetWindowUserPointer(m_Window, this);
 
 		glfwSetKeyCallback(m_Window, key_callback); //CALL TO key_callback method using GLFW code
-		glfwSetMouseButtonCallback(m_Window,mouse_button_callback); //CALL TO mouse_button_callback using GLFW code
+		// glfwSetMouseButtonCallback(m_Window, mouse_button_callback); //CALL TO mouse_button_callback using GLFW code
 
 		return true; 
 	}
@@ -80,9 +81,9 @@ namespace bounc { namespace graphics {
 		return mKeys[keycode];
 	}
 
-	bool Window::isMouseButtonPressed(unsigned int keycode) {
-		//FILL OUT (similar to above)
-	}
+	// bool Window::isMouseButtonPressed(unsigned int keycode) {
+	// 	//FILL OUT (similar to above)
+	// }
 
 	void key_callback(GLFWwindow* window, int key, int scancode, int action, int mods) { //METHOD FOR KEY CALLBACK
 
@@ -95,9 +96,9 @@ namespace bounc { namespace graphics {
 		
 	}
 
-	void mouse_button_callback(GLFWwindow* window, int button, int action, int mods) { //FINISH IMPLEMENTING THIS BIT
+	// void mouse_button_callback(GLFWwindow* window, int button, int action, int mods) { //FINISH IMPLEMENTING THIS BIT
 
-	}
+	// }
 
 
 
