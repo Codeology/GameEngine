@@ -21,6 +21,20 @@ int main() {
     }
 
 	while (!window.closed()) {
+		if (window.isKeyPressed(GLFW_KEY_A)) {
+			PRINT("Pressed A!");
+		}
+		if (window.isKeyPressed(GLFW_KEY_S)) {
+			PRINT("Pressed S!");
+		}
+		if (window.isKeyPressed(GLFW_KEY_W)) {
+			PRINT("Pressed W!");
+		}
+		if (window.isKeyPressed(GLFW_KEY_D)) {
+			PRINT("Pressed D!");
+		}
+
+
 		window.update();
 	}
 

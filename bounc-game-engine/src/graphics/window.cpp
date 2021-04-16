@@ -10,17 +10,29 @@
 
 namespace bounc { namespace graphics {
 
-	GLFWwindow* m_Window;
+	bool Window::mKeys[MAX_KEYS];
+	bool Window::mMouseButtons[MAX_BUTTONS];
+	double Window::mx;
+	double Window::my; 
+	void key_callback(GLFWwindow* window, int key, int scancode, int action, int mods);
 
 	Window::Window(const char *name, int width, int height) {
 		m_Name = name;
 		m_Width = width;
 		m_Height = height; 
+		GLFWwindow* m_Window = nullptr;
 
 		if (!init()) {
 			exit(EXIT_FAILURE);// glfwTerminate();
 		}
 
+		for (int i=0; i<MAX_KEYS; i++) {
+			mKeys[i] = false;
+		}
+
+		for (int i=0; i<MAX_BUTTONS; i++) {
+			mMouseButtons[i] = false;
+		}
 	}
 
 	Window::~Window(){
@@ -39,6 +51,9 @@ namespace bounc { namespace graphics {
 		}
 		glfwMakeContextCurrent(m_Window);
 		glewExperimental = GL_TRUE;
+		glfwSetWindowUserPointer(m_Window, this);
+
+		glfwSetKeyCallback(m_Window, key_callback);
 
 		return true; 
 	}
@@ -53,6 +68,25 @@ namespace bounc { namespace graphics {
 
 	bool Window::closed() const {
 		return glfwWindowShouldClose(m_Window);
+	}
+
+	bool Window::isKeyPressed(unsigned int keycode) { 
+		if (keycode >= MAX_KEYS) {
+			return false; 
+		}
+
+		return mKeys[keycode];
+	}
+
+	void key_callback(GLFWwindow* window, int key, int scancode, int action, int mods) {
+
+		Window* win = (Window*) glfwGetWindowUserPointer(window); //this line is basically getting the m_Window instance of the current window we have open
+		if (action != GLFW_RELEASE) {
+			win -> mKeys[key] = true;
+		} else {
+			win -> mKeys[key] = false;
+		}
+		
 	}
 
 
