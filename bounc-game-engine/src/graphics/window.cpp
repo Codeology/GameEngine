@@ -10,6 +10,7 @@
 
 namespace bounc { namespace graphics {
 
+	//declaring some random shit that will be used below
 	bool Window::mKeys[MAX_KEYS];
 	bool Window::mMouseButtons[MAX_BUTTONS];
 	double Window::mx;
@@ -53,7 +54,8 @@ namespace bounc { namespace graphics {
 		glewExperimental = GL_TRUE;
 		glfwSetWindowUserPointer(m_Window, this);
 
-		glfwSetKeyCallback(m_Window, key_callback);
+		glfwSetKeyCallback(m_Window, key_callback); //CALL TO key_callback method using GLFW code
+		glfwSetMouseButtonCallback(m_Window,mouse_button_callback); //CALL TO mouse_button_callback using GLFW code
 
 		return true; 
 	}
@@ -78,7 +80,7 @@ namespace bounc { namespace graphics {
 		return mKeys[keycode];
 	}
 
-	void key_callback(GLFWwindow* window, int key, int scancode, int action, int mods) {
+	void key_callback(GLFWwindow* window, int key, int scancode, int action, int mods) { //METHOD FOR KEY CALLBACK
 
 		Window* win = (Window*) glfwGetWindowUserPointer(window); //this line is basically getting the m_Window instance of the current window we have open
 		if (action != GLFW_RELEASE) {
@@ -88,6 +90,11 @@ namespace bounc { namespace graphics {
 		}
 		
 	}
+
+	void mouse_button_callback(GLFWwindow* window, int button, int action, int mods) { //FINISH IMPLEMENTING THIS BIT
+
+	}
+
 
 
 
