@@ -109,6 +109,8 @@ int main() {
 		//user movements
 
 		if (window.isKeyPressed(GLFW_KEY_A)) {
+			// PRINT("A KEY has been pressed");
+
 			if (-x_point <= 0.9) {
 				x_point -= 0.03;
 			}
@@ -116,18 +118,21 @@ int main() {
 			
 		}
 		else if (window.isKeyPressed(GLFW_KEY_S)) {
+			// PRINT("S KEY has been pressed");
 			if (-y_point <= 0.9) {
 				y_point -= 0.03;
 			}
 			
 		}
 		else if (window.isKeyPressed(GLFW_KEY_W)) {
+			// PRINT("W KEY has been pressed");
 			if (y_point <= 0.9) {
 				y_point += 0.03;
 			}
 			
 		}
 		else if (window.isKeyPressed(GLFW_KEY_D)) {
+			// PRINT("D KEY has been pressed");
 			if (x_point <= 0.9) {
 				x_point += 0.03;
 			}
