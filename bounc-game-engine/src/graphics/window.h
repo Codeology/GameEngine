@@ -23,16 +23,19 @@ namespace bounc { namespace graphics {
 			bool init();
 			friend void key_callback(GLFWwindow* window, int key, int scancode, int action, int mods); //callback for keyboard keys
 			friend void mouse_button_callback(GLFWwindow* window, int button, int action, int mods); //callback for mouse buttons
+			friend void cursor_position_callback(GLFWwindow* window, double xpos, double ypos); //callback for cursor position
 
 		public: 
 			Window(const char *name, int width, int height);
 			~Window();
 
+			void clear() const;
 			void update() const; 
 			bool closed() const;
 
-			static bool isKeyPressed(unsigned int keycode); //method used in main.cpp
-			static bool isMouseButtonPressed(unsigned int button); //method used in main.cpp
+			bool isKeyPressed(unsigned int keycode) const; //method used in main.cpp
+			bool isMouseButtonPressed(unsigned int button) const; //method used in main.cpp
+			void getMousePosition(double& x, double& y) const;
 
 		};
 

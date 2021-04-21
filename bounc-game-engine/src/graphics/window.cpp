@@ -1,4 +1,4 @@
-#include "window.h"
+ #include "window.h"
 
 #include <iostream> 
 
@@ -16,7 +16,8 @@ namespace bounc { namespace graphics {
 	double Window::mx;
 	double Window::my; 
 	void key_callback(GLFWwindow* window, int key, int scancode, int action, int mods);
-	// void mouse_button_callback(GLFWwindow* window, int button, int action, int mods);
+	void mouse_button_callback(GLFWwindow* window, int button, int action, int mods);
+	void cursor_position_callback(GLFWwindow* window, double xpos, double ypos);
 
 	Window::Window(const char *name, int width, int height) {
 		m_Name = name;
@@ -56,24 +57,27 @@ namespace bounc { namespace graphics {
 		glfwSetWindowUserPointer(m_Window, this);
 
 		glfwSetKeyCallback(m_Window, key_callback); //CALL TO key_callback method using GLFW code
-		// glfwSetMouseButtonCallback(m_Window, mouse_button_callback); //CALL TO mouse_button_callback using GLFW code
+		glfwSetMouseButtonCallback(m_Window, mouse_button_callback); //CALL TO mouse_button_callback using GLFW code
+		glfwSetCursorPosCallback(m_Window, cursor_position_callback); 
 
 		return true; 
 	}
 
 	void Window::update() const {
 		glfwPollEvents();
-		glClearColor( 0.23f, 0.38f, 0.47f, 1.0f );
-        glClear( GL_COLOR_BUFFER_BIT );
 		glfwSwapBuffers(m_Window);
 
+	}
+
+	void Window::clear() const {
+		glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 	}
 
 	bool Window::closed() const {
 		return glfwWindowShouldClose(m_Window);
 	}
 
-	bool Window::isKeyPressed(unsigned int keycode) { 
+	bool Window::isKeyPressed(unsigned int keycode) const { 
 		if (keycode >= MAX_KEYS) {
 			return false; 
 		}
@@ -81,9 +85,18 @@ namespace bounc { namespace graphics {
 		return mKeys[keycode];
 	}
 
-	// bool Window::isMouseButtonPressed(unsigned int keycode) {
-	// 	//FILL OUT (similar to above)
-	// }
+	bool Window::isMouseButtonPressed(unsigned int keycode) const {
+		if (keycode >= MAX_BUTTONS) {
+			return false;
+		}
+
+		return mMouseButtons[keycode];
+	}
+
+	void Window::getMousePosition(double& x, double& y) const {
+		x = mx; 
+		y = my; 
+	}
 
 	void key_callback(GLFWwindow* window, int key, int scancode, int action, int mods) { //METHOD FOR KEY CALLBACK
 
@@ -96,9 +109,22 @@ namespace bounc { namespace graphics {
 		
 	}
 
-	// void mouse_button_callback(GLFWwindow* window, int button, int action, int mods) { //FINISH IMPLEMENTING THIS BIT
+	void mouse_button_callback(GLFWwindow* window, int button, int action, int mods) { //FINISH IMPLEMENTING THIS BIT
 
-	// }
+		Window* win = (Window*) glfwGetWindowUserPointer(window); //this line is basically getting the m_Window instance of the current window we have open
+		if (action != GLFW_RELEASE) {
+			win -> mMouseButtons[button] = true;
+		} else {
+			win -> mMouseButtons[button] = false;
+		}
+
+	}
+
+	void cursor_position_callback(GLFWwindow* window, double xpos, double ypos) {
+		Window* win = (Window*) glfwGetWindowUserPointer(window);
+		win -> mx = xpos;
+		win -> my = ypos;
+	}
 
 
 
