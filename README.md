@@ -14,6 +14,8 @@ In this project, we're here to learn C++. Using the language, we are going to bu
 ## Learning Resources
 Learning resources for C++ and other parts of the project can be found on this Google Drive folder: https://drive.google.com/drive/folders/10BjgtN72MlKrD2B87_pIJL2mDXbkzUVO?usp=sharing
 
+Game Engine tutorial by The Cherno (YouTuber) was used throughout development of this project. A link to the playlist can be found here: https://www.youtube.com/playlist?list=PLlrATfBNZ98fqE45g3jZA_hLGUrD4bo6_
+
 We will also be using this Bank System, coded in C++, that is written by cppforschool.com for practice using c++. It has been edited by us (at Codeology), but full credit goes to cppforschool.com for developing and sharing the project's code. 
 
 A link to the Bank System project by cppforschool.com: http://www.cppforschool.com/project/banking-system-project.html
