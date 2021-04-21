@@ -2,7 +2,7 @@
 ### Project Leader: Ethan Chen
 ### Developers: Kyle Hua, Stella Lu, Ernest Goh, Sebastian Szafir
 
-## Final results can be visited at the following slides: https://docs.google.com/presentation/d/1vTI606ykmyR-QPBX83bj3dHajW1GLxPxDqICScQ2wUY/edit?usp=sharing
+## Final results can be viewed on the following slides: https://docs.google.com/presentation/d/1vTI606ykmyR-QPBX83bj3dHajW1GLxPxDqICScQ2wUY/edit?usp=sharing
 
 ## Quick Overview 
 In this project, we're here to learn C++. Using the language, we are going to build a game engine. What is a game engine? It basically lays the software framework to build and run video games. As a result, our engine needs to be able to render graphics, detect and manage collisions between on-screen objects, memory management and more. Hence, accurately implementing fundamental physics principles and efficient game engine performance are our two key goals. From there, we built a simple game, based on the classic childhood Snake Game (or more recently, like slither.io). 
